@@ -1,0 +1,15 @@
+[
+    {
+        "v1": "J'aime les patates",
+        "v2": "J'aime bien les carottes",
+        "v3": "J'adore bien les pommes"
+    },    {
+        "v1": ["J'aime les patates"],
+        "v2": ["J'aime bien les carottes"],
+        "v3": ["J'adore bien les pommes"]
+    },    {
+        "v1": ["Col 1","Col 2","Col 3"],
+        "v2": ["Col 1","Col B","Col 3"],
+        "v3": ["Col 1","Col 3"]
+    }
+]

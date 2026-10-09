@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>ww-diff-maker — demo</title>
+    <style>
+      /* Exemple de styles a definir cote WeWeb. Le composant n'impose rien. */
+      body { font-family: system-ui, sans-serif; margin: 2rem; line-height: 2; }
+      h2 { margin-top: 2rem; font-size: 1rem; color: #555; }
+      .wwdiff-root { font-size: 1.1rem; }
+
+      .wwdiff-equal { color: #222; }
+      .wwdiff-added { background: #d7f5dd; color: #09662a; border-radius: 3px; }
+      .wwdiff-removed { background: #fcd9d9; color: #8a1111; text-decoration: line-through; border-radius: 3px; }
+      .wwdiff-changed { background: #ffe6c2; color: #8a4b00; border-radius: 3px; }
+
+      .wwdiff-cell { display: inline-block; padding: 2px 6px; border: 1px solid #e3e3e3; border-radius: 4px; }
+      .wwdiff-sep { display: inline-block; width: 8px; }
+    </style>
+  </head>
+  <body>
+    <h1>ww-diff-maker</h1>
+
+    <h2>Cas 1 — rouge/vert (V1 → V2)</h2>
+    <div class="wwdiff-root"><span class="wwdiff-equal">J&#39;aime </span><span class="wwdiff-added">bien </span><span class="wwdiff-equal">les </span><span class="wwdiff-removed">patates</span><span class="wwdiff-added">carottes</span></div>
+
+    <h2>Cas 1 — orange (V1 vs [V2, V3])</h2>
+    <div class="wwdiff-root"><span class="wwdiff-changed">J&#39;aime</span><span class="wwdiff-equal"> </span><span class="wwdiff-changed">les</span><span class="wwdiff-equal"> </span><span class="wwdiff-changed">patates</span></div>
+
+    <h2>Cas 3 — rouge/vert (colonnes, V1 → V2)</h2>
+    <div class="wwdiff-root"><span class="wwdiff-cell"><span class="wwdiff-equal">Col 1</span></span><span class="wwdiff-sep"></span><span class="wwdiff-cell"><span class="wwdiff-equal">Col </span><span class="wwdiff-removed">2</span><span class="wwdiff-added">B</span></span><span class="wwdiff-sep"></span><span class="wwdiff-cell"><span class="wwdiff-equal">Col 3</span></span></div>
+
+    <h2>Cas 3 — orange (colonnes, V1 vs [V2, V3])</h2>
+    <div class="wwdiff-root"><span class="wwdiff-cell"><span class="wwdiff-equal">Col 1</span></span><span class="wwdiff-sep"></span><span class="wwdiff-cell"><span class="wwdiff-changed">Col 2</span></span><span class="wwdiff-sep"></span><span class="wwdiff-cell"><span class="wwdiff-equal">Col 3</span></span></div>
+  </body>
+</html>
