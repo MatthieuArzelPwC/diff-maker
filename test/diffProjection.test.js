@@ -33,3 +33,16 @@ test('version unique non-tableau est traitee comme liste a 1 element', () => {
   const model = diffProjection('Col 1', 'Col B');
   assert.ok(changedText(model).length > 0);
 });
+
+test('ne plante pas quand V1 est un tableau vide', () => {
+  // Cas courant dans WeWeb : une collection pas encore chargee renvoie [].
+  assert.doesNotThrow(() => diffProjection([], [['a']]));
+  const model = diffProjection([], [['a']]);
+  assert.deepEqual(model.cells, []);
+});
+
+test('retombe sur la locale par defaut si lang est invalide', () => {
+  // `lang` est bindable : une valeur invalide ne doit pas casser le rendu.
+  assert.doesNotThrow(() => diffProjection('Col 1', ['Col B'], 'not_a_locale!!'));
+  assert.ok(changedText(diffProjection('Col 1', ['Col B'], 'not_a_locale!!')).length > 0);
+});

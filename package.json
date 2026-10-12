@@ -1,10 +1,11 @@
 {
-  "name": "ww-diff-maker",
-  "version": "0.1.0",
+  "name": "diff-maker",
+  "version": "0.2.0",
   "description": "WeWeb coded component: comparateur de chaines de caracteres (diff mot-a-mot). Mode binaire rouge/vert et mode projection multi-versions orange. Algorithme de Myers via jsdiff + segmentation ECMA-402 Intl.Segmenter.",
   "type": "module",
-  "main": "src/wwElement.vue",
   "scripts": {
+    "build": "weweb build",
+    "serve": "weweb serve",
     "test": "node --test"
   },
   "keywords": [
@@ -18,6 +19,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "diff": "^5.2.0"
+    "diff": "5.2.2"
+  },
+  "devDependencies": {
+    "@weweb/cli": "latest"
   }
 }

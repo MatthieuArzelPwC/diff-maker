@@ -3,11 +3,10 @@ import assert from 'node:assert/strict';
 import { diffBinary } from '../src/core/diffBinary.js';
 import { diffProjection } from '../src/core/diffProjection.js';
 import { SEGMENT_TYPES } from '../src/core/model.js';
+import { CASES } from './fixtures.js';
 
-// Cas n3 de test.json : colonnes, V3 perd "Col 2".
-const V1 = ['Col 1', 'Col 2', 'Col 3'];
-const V2 = ['Col 1', 'Col B', 'Col 3'];
-const V3 = ['Col 1', 'Col 3'];
+// Cas n3 des fixtures : colonnes, V3 perd "Col 2".
+const { v1: V1, v2: V2, v3: V3 } = CASES[2];
 
 test('binaire tableau: forme array conservee', () => {
   const model = diffBinary(V1, V2);

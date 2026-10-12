@@ -48,8 +48,10 @@ function projectVersion(refCells, versionCells, lang, refTokens, masks, cellRemo
     if (pair.original === null) {
       // Colonne ajoutee cote version : insertion sans contrepartie dans V1.
       // On marque la frontiere sur la cellule de reference la plus proche.
+      // Si V1 n'a aucune cellule (binding vide/pas encore charge), il n'y a
+      // rien a surligner : on ignore l'insertion.
       const target = refIndex >= 0 ? refIndex : 0;
-      markBoundary(masks[target]);
+      if (masks[target]) markBoundary(masks[target]);
       continue;
     }
 

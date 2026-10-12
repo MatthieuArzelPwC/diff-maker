@@ -10,7 +10,7 @@ export default {
   properties: {
     original: {
       label: { en: "Original (V1)", fr: "Original (V1)" },
-      type: "Array",
+      type: "Text",
       section: "settings",
       bindable: true,
       defaultValue: "J'aime les patates",
@@ -24,7 +24,7 @@ export default {
     },
     modified: {
       label: { en: "Modified", fr: "Modifie" },
-      type: "Array",
+      type: "Text",
       section: "settings",
       bindable: true,
       defaultValue: "J'aime bien les carottes",

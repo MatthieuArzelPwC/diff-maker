@@ -12,14 +12,36 @@
 
 const segmenterCache = new Map();
 
+const DEFAULT_LANG = 'fr';
+
+/**
+ * Construit (et memorise) un Segmenter pour la locale demandee.
+ *
+ * `lang` est une prop bindable : une valeur invalide ("", "xx_YY!!", un objet
+ * coerce) ferait lever un RangeError a Intl.Segmenter et casserait le rendu du
+ * composant. On retombe donc sur la locale par defaut, puis sur la locale
+ * neutre, plutot que de propager l'erreur.
+ */
 function getSegmenter(lang) {
-  const key = lang || 'fr';
+  const key = typeof lang === 'string' && lang ? lang : DEFAULT_LANG;
   let seg = segmenterCache.get(key);
   if (!seg) {
-    seg = new Intl.Segmenter(key, { granularity: 'word' });
+    seg = createSegmenter(key);
     segmenterCache.set(key, seg);
   }
   return seg;
+}
+
+function createSegmenter(key) {
+  try {
+    return new Intl.Segmenter(key, { granularity: 'word' });
+  } catch {
+    try {
+      return new Intl.Segmenter(DEFAULT_LANG, { granularity: 'word' });
+    } catch {
+      return new Intl.Segmenter(undefined, { granularity: 'word' });
+    }
+  }
 }
 
 /**

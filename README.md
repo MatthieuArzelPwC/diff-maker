@@ -1,4 +1,4 @@
-# ww-diff-maker
+# diff-maker
 
 WeWeb **coded component** (Vue 3) qui compare des chaines de caracteres et rend
 un HTML surligne. Deux modes :
@@ -52,7 +52,14 @@ Classes emises :
 {prefix}-changed   fragment modifie (orange) [mode orange]
 ```
 
-Exemple de CSS : voir `demo/index.html`.
+Exemple de CSS a definir cote WeWeb :
+
+```css
+.wwdiff-added   { background: #d4f7d4; }
+.wwdiff-removed { background: #f7d4d4; text-decoration: line-through; }
+.wwdiff-changed { background: #ffe0b2; }
+.wwdiff-sep     { display: inline-block; width: 1em; }
+```
 
 ## Coercion des entrees « any »
 
@@ -77,20 +84,17 @@ src/core/               coeur pur : normalize, segment, align, diffBinary,
                         diffProjection, model, index (API publique)
 src/render/html.js      modele -> HTML (spans + classes)
 src/sanitize/escape.js  echappement HTML
-test/                   tests node:test (node --test)
-demo/                   run.js (console) + index.html (visuel)
-data/test.json          cas de reference
+test/                   tests node:test (node --test) + fixtures.js (cas de reference)
 ```
 
 ## Developpement
 
 ```bash
 npm install
-npm test          # tests unitaires du coeur (13)
-npm run demo      # rend les 3 cas de test.json en console
+npm test          # tests unitaires du coeur (15)
+npm run serve     # sert le composant pour l'editeur WeWeb en mode dev
+npm run build --name=diff-maker   # build de production (verifier avant push)
 ```
-
-Ouvrir `demo/index.html` dans un navigateur pour la vue stylisee.
 
 Chargement dans l'editeur WeWeb : suivre le process coded component
 (serve local du composant puis import dans l'editeur).
